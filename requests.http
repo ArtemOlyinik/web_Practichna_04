@@ -1,0 +1,39 @@
+@host = http://localhost:3000
+
+### 1. Отримати всі автозапчастини
+GET {{host}}/auto-parts
+
+### 2. Пошук за назвою
+GET {{host}}/auto-parts?search=гальмів
+
+### 3. Обмежити кількість записів
+GET {{host}}/auto-parts?limit=2
+
+### 4. Отримати одну автозапчастину
+GET {{host}}/auto-parts/1
+
+### 5. Неіснуючий ідентифікатор (404)
+GET {{host}}/auto-parts/99999
+
+### 6. Створити автозапчастину (201)
+POST {{host}}/auto-parts
+Content-Type: application/json
+
+{
+  "title": "Паливний насос Bosch 0580454001",
+  "price": 4100,
+  "oemCode": "0580454001",
+  "condition": "new",
+  "carBrand": "Audi"
+}
+
+### 7. Часткове оновлення (200)
+PATCH {{host}}/auto-parts/1
+Content-Type: application/json
+
+{
+  "price": 2390
+}
+
+### 8. Видалення (204)
+DELETE {{host}}/auto-parts/3
